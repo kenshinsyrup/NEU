@@ -1,0 +1,6 @@
+/.gradle/
+/.idea/
+/gradle/
+/build/
+chatroom.util.ChatLogger.log*
+.DS_Store

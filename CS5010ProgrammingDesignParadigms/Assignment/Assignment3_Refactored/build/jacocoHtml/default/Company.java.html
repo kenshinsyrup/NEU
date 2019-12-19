@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Company.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3_Refactored</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Company.java</span></div><h1>Company.java</h1><pre class="source lang-java linenums">import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import utils.CSVProcessor;
+
+/**
+ * Represents a Company.
+ */
+public class Company {
+
+  private Template letterTemplate;
+  private Template emailTemplate;
+  private List&lt;User&gt; users;
+  private CSVProcessor csvProcessor;
+  private String outputDir;
+
+  /**
+   * Inits a Company.
+   *
+   * @param csvPath            is given csv path.
+   * @param emailTemplatePath  is email template path.
+   * @param letterTemplatePath is letter template path.
+   * @param outputDir          is output dir.
+   * @throws Exception
+   */
+  public Company(String csvPath, String emailTemplatePath, String letterTemplatePath,
+      String outputDir)
+<span class="fc" id="L31">      throws Exception {</span>
+<span class="fc" id="L32">    this.csvProcessor = new CSVProcessor(csvPath);</span>
+
+<span class="fc" id="L34">    this.users = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L35">    populateUserData();</span>
+
+<span class="pc bpc" id="L37" title="2 of 4 branches missed.">    if (letterTemplatePath != null &amp;&amp; !letterTemplatePath.equals(&quot;&quot;)) {</span>
+<span class="fc" id="L38">      this.letterTemplate = new Template(letterTemplatePath, &quot;letter&quot;);</span>
+    }
+<span class="pc bpc" id="L40" title="2 of 4 branches missed.">    if (emailTemplatePath != null &amp;&amp; !emailTemplatePath.equals(&quot;&quot;)) {</span>
+<span class="fc" id="L41">      this.emailTemplate = new Template(emailTemplatePath, &quot;email&quot;);</span>
+    }
+<span class="fc" id="L43">    this.outputDir = outputDir;</span>
+<span class="fc" id="L44">  }</span>
+
+  /**
+   * Generate file.
+   *
+   * @param type is given file type.
+   * @throws Exception
+   */
+  public void generateFile(String type) throws Exception {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">    for (int i = 0; i &lt; this.users.size(); i++) {</span>
+<span class="fc" id="L54">      String content = &quot;&quot;;</span>
+<span class="fc" id="L55">      User user = this.users.get(i);</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">      if (type.equals(&quot;letter&quot;)) {</span>
+<span class="nc" id="L57">        content = this.letterTemplate.generateContent(user);</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">      } else if (type.equals(&quot;email&quot;)) {</span>
+<span class="fc" id="L59">        content = this.emailTemplate.generateContent(user);</span>
+      }
+
+<span class="fc" id="L62">      File directory = new File(this.outputDir);</span>
+      // If you require it to make the entire directory path including parents,
+<span class="fc bfc" id="L64" title="All 2 branches covered.">      if (!directory.exists()) {</span>
+<span class="fc" id="L65">        directory.mkdir();</span>
+      }
+
+<span class="fc" id="L68">      File file = new File(this.outputDir + &quot;/&quot; + +user.hashCode() + &quot;.txt&quot;);</span>
+<span class="fc" id="L69">      FileWriter fw = new FileWriter(file.getAbsoluteFile());</span>
+<span class="fc" id="L70">      BufferedWriter bw = new BufferedWriter(fw);</span>
+<span class="fc" id="L71">      bw.write(content);</span>
+<span class="fc" id="L72">      bw.close();</span>
+    }
+<span class="fc" id="L74">  }</span>
+
+  // populate user data from cvs files to User object.
+  private void populateUserData() throws Exception {
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">    if (this.csvProcessor != null) {</span>
+<span class="fc" id="L79">      List&lt;String[]&gt; dataList = this.csvProcessor.parseData();</span>
+      // index from 1 because 0th is the header of csv
+<span class="fc bfc" id="L81" title="All 2 branches covered.">      for (int i = 1; i &lt; dataList.size(); i++) {</span>
+<span class="fc" id="L82">        String[] data = dataList.get(i);</span>
+<span class="fc" id="L83">        User user = new User(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7],</span>
+            data[8], data[9], data[10], data[11]);
+<span class="fc" id="L85">        this.users.add(user);</span>
+      }
+    }
+<span class="fc" id="L88">  }</span>
+
+  /**
+   * Hash code.
+   *
+   * @return hashcode.
+   */
+  public int hashcode() {
+<span class="fc" id="L96">    return Objects.hash(this.emailTemplate.toString(), this.letterTemplate.toString(),</span>
+        this.outputDir);
+  }
+
+  /**
+   * Compares.
+   *
+   * @param company is given company.
+   * @return true if equals.
+   */
+  public boolean equals(Company company) {
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">    return this.hashcode() == company.hashcode();</span>
+  }
+
+  /**
+   * To string.
+   *
+   * @return String.
+   */
+  public String toString() {
+<span class="fc" id="L116">    return this.letterTemplate.toString() + &quot; &quot; + this.emailTemplate.toString() + &quot; &quot; + this.users</span>
+<span class="fc" id="L117">        .toString() + &quot; &quot; + this.csvProcessor.toString() + &quot; &quot; + this.outputDir;</span>
+  }
+
+  /**
+   * Gets letter template.
+   *
+   * @return letter template.
+   */
+  public Template getLetterTemplate() {
+<span class="fc" id="L126">    return letterTemplate;</span>
+  }
+
+  /**
+   * Sets letter template.
+   *
+   * @param letterTemplate is given letter template.
+   */
+  public void setLetterTemplate(Template letterTemplate) {
+<span class="fc" id="L135">    this.letterTemplate = letterTemplate;</span>
+<span class="fc" id="L136">  }</span>
+
+  /**
+   * Gets email template.
+   *
+   * @return email template.
+   */
+  public Template getEmailTemplate() {
+<span class="fc" id="L144">    return emailTemplate;</span>
+  }
+
+  /**
+   * Set email template.
+   *
+   * @param emailTemplate is given email template.
+   */
+  public void setEmailTemplate(Template emailTemplate) {
+<span class="fc" id="L153">    this.emailTemplate = emailTemplate;</span>
+<span class="fc" id="L154">  }</span>
+
+  /**
+   * Gets users.
+   *
+   * @return users.
+   */
+  public List&lt;User&gt; getUsers() {
+<span class="fc" id="L162">    return users;</span>
+  }
+
+  /**
+   * Sets users.
+   *
+   * @param users is given users.
+   */
+  public void setUsers(List&lt;User&gt; users) {
+<span class="fc" id="L171">    this.users = users;</span>
+<span class="fc" id="L172">  }</span>
+
+  /**
+   * Gets csv processor.
+   *
+   * @return csv processor.
+   */
+  public CSVProcessor getCsvProcessor() {
+<span class="fc" id="L180">    return csvProcessor;</span>
+  }
+
+  /**
+   * Sets csv processor.
+   *
+   * @param csvProcessor is given csv provessor.
+   */
+  public void setCsvProcessor(CSVProcessor csvProcessor) {
+<span class="fc" id="L189">    this.csvProcessor = csvProcessor;</span>
+<span class="fc" id="L190">  }</span>
+
+  /**
+   * Gets output dir.
+   *
+   * @return output dir.
+   */
+  public String getOutputDir() {
+<span class="fc" id="L198">    return outputDir;</span>
+  }
+
+  /**
+   * Sets output dir.
+   *
+   * @param outputDir is given output dir.
+   */
+  public void setOutputDir(String outputDir) {
+<span class="fc" id="L207">    this.outputDir = outputDir;</span>
+<span class="fc" id="L208">  }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
