@@ -1,0 +1,9 @@
+/.gradle/
+/.idea/
+/gradle/
+/assessments.csv
+/courses.csv
+/studentVle.csv
+/studentVle_for_test.csv
+/build/
+*.csv

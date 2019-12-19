@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CompanyTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2019-10-28T17:53:57" hostname="KenshinMBP.local" time="0.384">
+  <properties/>
+  <testcase name="getOutputDir" classname="CompanyTest" time="0.053"/>
+  <testcase name="setEmailTemplate" classname="CompanyTest" time="0.005"/>
+  <testcase name="testToString" classname="CompanyTest" time="0.015"/>
+  <testcase name="setOutputDir" classname="CompanyTest" time="0.004"/>
+  <testcase name="getEmailTemplate" classname="CompanyTest" time="0.004"/>
+  <testcase name="hashcode" classname="CompanyTest" time="0.004"/>
+  <testcase name="getCsvProcessor" classname="CompanyTest" time="0.009"/>
+  <testcase name="setLetterTemplate" classname="CompanyTest" time="0.056"/>
+  <testcase name="setCsvProcessor" classname="CompanyTest" time="0.028"/>
+  <testcase name="testEquals" classname="CompanyTest" time="0.007"/>
+  <testcase name="setUsers" classname="CompanyTest" time="0.01"/>
+  <testcase name="getLetterTemplate" classname="CompanyTest" time="0.01"/>
+  <testcase name="generateFile" classname="CompanyTest" time="0.11"/>
+  <testcase name="getUsers" classname="CompanyTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

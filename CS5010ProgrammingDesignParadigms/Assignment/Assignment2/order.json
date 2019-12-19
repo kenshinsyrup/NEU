@@ -1,0 +1,190 @@
+{
+  "cabinets": [
+    {
+      "cabinet_name": "Wardrobe Yossarian Cabinet",
+      "corner_feet_num": 4,
+      "size": {
+        "depth": 16,
+        "width": 36,
+        "height": 72
+      },
+      "cabinet_num": 1,
+      "parts": [
+        {
+          "doors": [
+            {
+              "size": {
+                "depth": 0,
+                "width": 36,
+                "height": 72
+              },
+              "num": 2,
+              "name": "Wardrobe Belacqua Door",
+              "door_handle": {
+                "is_required": true,
+                "num": 1,
+                "is_standard": false,
+                "is_separate": false
+              },
+              "colors": [
+                "bone",
+                "oxblood"
+              ]
+            },
+            {
+              "size": {
+                "depth": 0,
+                "width": 36,
+                "height": 72
+              },
+              "num": 1,
+              "name": "Wardrobe Slothrop Door",
+              "door_handle": {
+                "is_required": true,
+                "num": 1,
+                "is_standard": false,
+                "is_separate": false
+              },
+              "colors": [
+                "black",
+                "brown"
+              ]
+            },
+            {
+              "size": {
+                "depth": 0,
+                "width": 36,
+                "height": 72
+              },
+              "num": 2,
+              "name": "Wardrobe Belacqua Door",
+              "door_handle": {
+                "is_required": true,
+                "num": 1,
+                "is_standard": false,
+                "is_separate": false
+              },
+              "colors": [
+                "bone",
+                "oxblood"
+              ]
+            },
+            {
+              "size": {
+                "depth": 0,
+                "width": 36,
+                "height": 36
+              },
+              "num": 1,
+              "name": "Half Slothrop Door",
+              "door_handle": {
+                "is_required": true,
+                "num": 1,
+                "is_standard": false,
+                "is_separate": false
+              },
+              "colors": [
+                "brown",
+                "black"
+              ]
+            },
+            {
+              "size": {
+                "depth": 0,
+                "width": 36,
+                "height": 36
+              },
+              "num": 1,
+              "name": "Half Gaga Door",
+              "door_handle": {
+                "is_required": true,
+                "num": 1,
+                "is_standard": false,
+                "is_separate": true
+              },
+              "colors": [
+                "bone",
+                "oxblood",
+                "brown",
+                "black"
+              ]
+            },
+            {
+              "size": {
+                "depth": 0,
+                "width": 36,
+                "height": 36
+              },
+              "num": 2,
+              "name": "Half Belacqua Door",
+              "door_handle": {
+                "is_required": true,
+                "num": 1,
+                "is_standard": false,
+                "is_separate": false
+              },
+              "colors": [
+                "bone",
+                "oxblood"
+              ]
+            },
+            {
+              "size": {
+                "depth": 0,
+                "width": 36,
+                "height": 18
+              },
+              "num": 1,
+              "name": "Quarter Gaga Door",
+              "door_handle": {
+                "is_required": true,
+                "num": 1,
+                "is_standard": false,
+                "is_separate": true
+              },
+              "colors": [
+                "brown",
+                "black",
+                "bone",
+                "oxblood"
+              ]
+            }
+          ]
+        },
+        {
+          "drawers": []
+        }
+      ],
+      "mounts": [
+        {
+          "feet_required": false,
+          "floor_mounted": true,
+          "wall_mounted": false,
+          "rail_standard": false,
+          "rail_required": false,
+          "feet_optional": false,
+          "feet_separate": false,
+          "rail_separate": false
+        }
+      ],
+      "wall_fixture": {
+        "is_required": false,
+        "num": 1,
+        "is_standard": false,
+        "is_separate": false
+      },
+      "fits": [
+        {
+          "shelf_num": 7,
+          "drawer_num": 0
+        }
+      ],
+      "colors": [
+        "oxblood",
+        "brown",
+        "black",
+        "bone"
+      ]
+    }
+  ]
+}

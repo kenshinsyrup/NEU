@@ -1,0 +1,9 @@
+Summary
+
+1. add more tests
+
+2. add dependencies to support sending email, add the function to send email
+
+3. refactor some methods
+
+4. add new command line parameters
