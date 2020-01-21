@@ -4,3 +4,12 @@
 # IntelliJ
 out/
 .idea/
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
